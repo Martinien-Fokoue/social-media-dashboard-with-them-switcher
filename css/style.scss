@@ -1,0 +1,457 @@
+$colors : (
+    Lime-Green: hsl(163, 72%, 41%),
+    Bright-Red: hsl(356, 69%, 56%),
+
+    Toggle_dark_1: hsl(210, 78%, 56%),
+    Toggle_dark_2: hsl(146, 68%, 55%),
+
+    White-text: hsl(0, 0%, 100%),
+    Desaturated-Blue-text: hsl(228, 34%, 66%),
+    Dark-Grayish-Blue-Text: hsl(228, 12%, 44%),
+    Very-Dark-Blue-Text: hsl(230, 17%, 14%),
+    card-hover : hsl(228, 26%, 27%),
+
+    Very-Dark-Blue-BG: hsl(230, 17%, 14%),
+    Very-Dark-Blue-Top-BG-Pattern: hsl(232, 19%, 15%),
+    Dark-Desaturated-Blue-Card-BG: hsl(228, 28%, 20%),
+    LWhite-BG: hsl(0, 0%, 100%),
+    LVery-Pale-Blue-Top-BG-Pattern: hsl(225, 100%, 98%),
+    Light-Grayish-Blue-Card-BG: hsl(227, 47%, 96%),
+    
+    text-color :hsl(240, 11%, 15%),
+    toggle-color : hsl(232, 22%, 74%),
+    round-color : hsl(230, 30%, 96%),
+    header-color : hsl(230, 75%, 98%),
+    card-color :hsl(222, 50%, 96%),
+    card-hoverL :hsl(232, 33%, 91%),
+    sub-color:hsl(231, 9%, 44%),
+
+    
+);
+
+$size : 14px;
+
+
+
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Inter;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+body {
+    // height: 100vh;
+    background: map-get($colors, Very-Dark-Blue-BG);
+    transition: .2s ease;
+
+
+    &.light{
+        background: map-get($colors, LWhite-BG);
+    }
+}
+
+main {
+    color: map-get($colors, White-text);
+    height: 100%;
+    font-size: $size;
+    transition: .2s ease;
+
+
+    @media screen and (max-width : 700px){
+        // border: 2px solid red;
+    }
+
+    &.light{
+        color: map-get($colors, text-color);
+    }
+}
+
+.header {
+    background: map-get($colors, Very-Dark-Blue-Top-BG-Pattern);
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    height: 210px;
+    padding-top: 30px;
+    transition: .2s ease;
+
+
+    @media screen and (max-width : 700px){
+
+    }
+
+    &.light{
+        background: map-get($colors, header-color);
+        // transition: 2s ease;
+
+    }
+
+    & .header_container {
+        width: 85%;
+        margin: auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        @media screen and (max-width : 700px){
+            // border: 2px solid red;
+            flex-direction: column;
+            // width: 90%;
+        }
+
+        
+
+        & .media_tittle {
+            @media screen and (max-width : 700px){
+                // border: 2px solid red;
+                // align-self: flex-start;
+                padding-bottom: 20px;
+                width: 100%;
+                border-bottom: 1px solid map-get($colors, Desaturated-Blue-text);
+            }
+
+            & .title {
+                @media screen and (max-width : 700px){
+                    // border: 2px solid red;
+                    font-size: 20px;
+                }
+            }
+            & .followers {
+                color: map-get($colors, Desaturated-Blue-text);
+                transition: .2s ease;
+                @media screen and (max-width : 700px){
+                    // border: 2px solid red;
+                    font-size: 12px;
+                }
+
+                &.light{
+                    color: map-get($colors, sub-color);
+                }
+            }
+        }
+
+        & .mode {
+            display: flex;
+            align-items: center;
+            flex-direction: row-reverse;
+            @media screen and (max-width : 700px){
+                margin-top: 20px;
+            }
+
+            @media screen and (max-width : 700px){
+                width: 100%;
+                justify-content: space-between;
+            }
+
+            & h4 {
+                color: map-get($colors, Desaturated-Blue-text);
+                transition: color .2s ease;
+                @media screen and (max-width : 700px){
+                    font-size: 12px;
+                }
+
+                &.light{
+                    color: map-get($colors, sub-color);
+                }
+            }
+
+            & .toggle {
+                width: 50px;
+                height: 25px;
+                border-radius: 30px;
+                background: linear-gradient(to right, map-get($colors, Toggle_dark_1),  map-get($colors, Toggle_dark_2));
+                position: relative;
+                cursor: pointer;
+                margin-left: 15px;
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+                transition: .2s ease;
+
+
+                &.light{
+                    background: map-get($colors, toggle-color);
+
+                    &:hover {
+                        background: linear-gradient(to right, map-get($colors, Toggle_dark_1),  map-get($colors, Toggle_dark_2));
+                    }
+                }
+                
+                &:hover {
+                    .round {
+                        background: map-get($colors, card-hover);
+                    }
+                }
+
+                & .round {
+                    width: 21px;
+                    height: 21px;
+                    border-radius: 50%;
+                    margin: 2px;
+                    background: map-get($colors, Very-Dark-Blue-BG);
+                    transition: .2s ease;
+
+                    &.active{
+                        transform: translateX(120%);
+                    }
+
+                    &.light {
+                        background: map-get($colors, round-color);
+                    }
+                }
+            }
+        }
+    }
+}
+
+.section_cards {
+
+    & .container {
+        width: 85%;
+        margin: auto;
+        transform: translateY(-90px);
+        display: grid;
+        row-gap: 35px;
+
+        @media screen and (max-width : 700px){
+            // border: 2px solid red;
+            transform: translateY(-40px);
+        }
+
+        & .wrapper_1 {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            column-gap: 30px;
+
+            @media screen and (max-width : 700px){
+                // border: 2px solid red;
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            & .card {
+                padding: 20px 0;
+                background-color: map-get($colors, Dark-Desaturated-Blue-Card-BG);
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: space-between;
+                height: 180px;
+                border-radius: 5px;
+                position: relative;
+                overflow: hidden;
+                transition: .2s ease;
+
+                &.light {
+                    background-color: map-get($colors, card-color);
+
+                    &:hover {
+                        background-color: map-get($colors, card-hoverL);
+                    }
+                }
+
+                &:hover {
+                    background-color: map-get($colors, card-hover);
+                }
+                
+
+                &::before {
+                    content: '';
+                    position: absolute;
+                    height: 4px;
+                    width: 100%;
+                    background: map-get($colors, Toggle_dark_1);
+                    top: 0;
+                }
+
+                &:nth-child(3)::before{
+                    content: '';
+                    position: absolute;
+                    height: 4px;
+                    width: 100%;
+                    background: linear-gradient(to right,#FDC366, #EE877E, #DF4896);
+                    top: 0;
+                }
+
+                &:nth-child(4)::before{
+                    content: '';
+                    position: absolute;
+                    height: 4px;
+                    width: 100%;
+                    background: #C4032B;
+                    top: 0;
+                }
+
+                & .user_account {
+                    display: flex;
+                    align-items: center;
+
+                    & span {
+                        color: map-get($colors, Desaturated-Blue-text);
+                        font-weight: 700;
+                        margin-left: 10px;
+                        transition: .2s ease;
+
+                        &.light{
+                            color: map-get($colors, sub-color);
+                        }
+                    }
+                }
+
+                & .nb_followers {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    & .nber {
+                        font-size: 50px;
+                        font-weight: 700;
+                    }
+
+                    & span {
+                        text-transform: uppercase;
+                        font-weight: 400;
+                        color: map-get($colors, Desaturated-Blue-text);
+                        letter-spacing: 4px;
+                        font-size: 12px;
+                        transition: .2s ease;
+
+                        &.light{
+                            color: map-get($colors, sub-color);
+                        }
+                    }
+                }
+
+                & .day {
+                    display: flex;
+                    align-items: center;
+                    color: map-get($colors, Lime-Green);
+
+                    & span {
+                        font-size: 12px;
+                        font-weight: 700;
+                        margin-left: 5px;
+
+                        &.red {
+                            color: map-get($colors, Bright-Red);
+                        }
+                    }
+                }
+            }
+        }
+
+        & .wrapper_2 {
+            // border: 2px solid red;
+            @media screen and (max-width : 700px){
+                // border: 2px solid red;
+            }
+
+            & .title {
+                font-size: 25px;
+                margin-bottom : 15px;
+
+                @media screen and (max-width : 700px){
+                    // border: 2px solid red;
+                    font-size: 20px;
+                }
+            }
+
+            & .wrapper {
+                display: grid;
+                grid-template-rows: repeat(2, 1fr);
+                row-gap: 20px;
+
+                @media screen and (max-width : 700px){
+                    // border: 2px solid red;
+                    row-gap: 15px;
+                }
+
+                & .item {
+                    display: grid;
+                    grid-template-columns: repeat(4, 1fr);
+                    column-gap: 30px;
+
+                    @media screen and (max-width : 700px){
+                        // border: 2px solid red;
+                        grid-template-columns: 1fr;
+                        gap: 15px;
+                    }
+
+                    & .card {
+                        border-radius: 5px;
+                        background-color: map-get($colors, Dark-Desaturated-Blue-Card-BG);
+                        padding: 20px;
+                        display: grid;
+                        grid-template-rows: repeat(2, 1fr);
+                        row-gap: 5px;
+                        transition: .2s ease;
+
+                        &.light {
+                            background-color: map-get($colors, card-color);
+
+                            &:hover {
+                                background-color: map-get($colors, card-hoverL);
+                            }
+                        }
+
+                        &:hover {
+                            background-color: map-get($colors, card-hover);
+                        }
+                        
+
+                        & .page_views, & .percents {
+                            display: flex;
+                            align-items: center;
+                            justify-content: space-between;
+
+                            & .action {
+                                font-weight: 700;
+                                color: map-get($colors, Desaturated-Blue-text);
+                                transition: .2s ease;
+
+                                &.light{
+                                    color: map-get($colors, sub-color);
+                                }
+                            }
+
+                            & .bold {
+                                font-size: 30px;
+                                font-weight: 700;
+                            }
+
+                            & .percent {
+                                display: flex;
+                                align-items: center;
+
+                                & p {
+                                    margin-left: 5px;
+                                    color: map-get($colors, Lime-Green);
+                                    font-weight: 700;
+                                    font-size: 12px;
+
+                                    &.red {
+                                        color: map-get($colors, Bright-Red);
+                                    }
+                                }
+                            }
+                        }
+
+                        & .percents {
+                            align-items: flex-end;
+                        }
+                        
+                    }
+                }
+            }
+        }
+    }
+}
+
+
